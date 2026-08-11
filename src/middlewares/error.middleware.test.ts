@@ -1,8 +1,8 @@
-import { PrismaClientKnownRequestError } from "@prisma/client/runtime/client";
 import { NextFunction, Request, Response } from "express";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import response from "../utils/response";
 import { errorHandler } from "./error.middleware";
+import { Prisma } from "../generated/prisma/client";
 
 describe("middleware tests", () => {
   const req = {} as Request;
@@ -18,7 +18,7 @@ describe("middleware tests", () => {
 
   it("returns 409 for email that already exists", () => {
     const failureSpy = vi.spyOn(response, "failure");
-    const errorObject = new PrismaClientKnownRequestError(
+    const errorObject = new Prisma.PrismaClientKnownRequestError(
       "Unique constraint failed",
       {
         code: "P2002",
@@ -34,10 +34,13 @@ describe("middleware tests", () => {
 
   it("returns 404 for the record that doesn't exist", () => {
     const failureSpy = vi.spyOn(response, "failure");
-    const errorObject = new PrismaClientKnownRequestError("Record not found", {
-      code: "P2025",
-      clientVersion: "4.15.0",
-    });
+    const errorObject = new Prisma.PrismaClientKnownRequestError(
+      "Record not found",
+      {
+        code: "P2025",
+        clientVersion: "4.15.0",
+      },
+    );
 
     errorHandler(errorObject, req, res, next);
 
