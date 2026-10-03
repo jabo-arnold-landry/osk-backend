@@ -1,0 +1,33 @@
+{
+  "default_branch": "dev",
+  "branches": [
+    "dev",
+    "feat/fetch-feature-review",
+    "fix/category-case-insensitive",
+    "fix/contribution-guide",
+    "ft/add-etag-headers",
+    "ft/database-seed",
+    "ft/featured-reviews",
+    "test/review-service"
+  ],
+  "parent": {
+    "dev": null,
+    "feat/fetch-feature-review": "dev",
+    "fix/category-case-insensitive": "dev",
+    "fix/contribution-guide": "dev",
+    "ft/add-etag-headers": "dev",
+    "ft/database-seed": "dev",
+    "ft/featured-reviews": "dev",
+    "test/review-service": "dev"
+  },
+  "order": [
+    "dev",
+    "feat/fetch-feature-review",
+    "fix/category-case-insensitive",
+    "fix/contribution-guide",
+    "ft/add-etag-headers",
+    "ft/database-seed",
+    "ft/featured-reviews",
+    "test/review-service"
+  ]
+}
